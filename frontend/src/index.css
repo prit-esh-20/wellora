@@ -45,27 +45,126 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection {
-  background: rgba(232, 117, 26, 0.25);
+/* Global scrollbar: hidden by default, shown on hover/active scroll */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #c8ceca;
-  border-radius: 5px;
-  border: 2px solid var(--color-wl-bg);
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background-color 150ms ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #b3bab6;
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Show scrollbar on hover/focus/active */
+*:hover::-webkit-scrollbar-thumb,
+*:focus::-webkit-scrollbar-thumb,
+*:active::-webkit-scrollbar-thumb {
+  background: var(--color-wl-border-strong);
+}
+
+*:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wl-text-muted);
+}
+
+/* Firefox: show thin scrollbar on hover */
+*:hover {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wl-border-strong) transparent;
+}
+
+/* Reusable utility class for consistent scrollbar behavior */
+.custom-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background-color 150ms ease;
+}
+
+.custom-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.custom-scroll:hover::-webkit-scrollbar-thumb,
+.custom-scroll:focus::-webkit-scrollbar-thumb,
+.custom-scroll:active::-webkit-scrollbar-thumb {
+  background: var(--color-wl-border-strong);
+}
+
+.custom-scroll:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wl-text-muted);
+}
+
+.custom-scroll:hover {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wl-border-strong) transparent;
+}
+
+/* Global page scrollbar: use custom-scroll behavior */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background-color 150ms ease;
+}
+
+html:hover::-webkit-scrollbar-thumb,
+html:focus::-webkit-scrollbar-thumb,
+html:active::-webkit-scrollbar-thumb {
+  background: var(--color-wl-border-strong);
+}
+
+html:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wl-text-muted);
+}
+
+html:hover {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wl-border-strong) transparent;
+}
+
+::selection {
+  background: rgba(232, 117, 26, 0.25);
 }
 
 input:focus,
