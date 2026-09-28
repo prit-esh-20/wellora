@@ -10,6 +10,7 @@ import ComparableWells from "../components/dashboard/ComparableWells.jsx";
 import DrillingCharts from "../components/dashboard/DrillingCharts.jsx";
 import EvidencePanel from "../components/dashboard/EvidencePanel.jsx";
 import ComparableWellsDrawer from "../components/dashboard/ComparableWellsDrawer.jsx";
+import WellReasoning from "../components/dashboard/WellReasoning.jsx";
 import { useWellContext } from "../context/WellContext.jsx";
 import { getRiskAlerts } from "../data/mockData.js";
 
@@ -45,6 +46,9 @@ export default function Dashboard() {
       ) : (
         <DepthTimeline />
       )}
+
+      {/* XAI: compact reasoning card explaining the existing analysis */}
+      <WellReasoning onOpenEvidence={handleOpenEvidence} />
 
       {/* Level 2: nearby wells */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
