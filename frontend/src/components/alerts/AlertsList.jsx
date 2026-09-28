@@ -26,7 +26,7 @@ export default function AlertsList({ alerts, total, selectedId, onSelect }) {
           </span>
         }
       />
-      <div className="flex flex-col gap-2.5 px-3.5 py-3.5">
+      <div className="flex flex-1 flex-col gap-2.5 px-3.5 py-3.5">
         {alerts.map((a) => {
           const selected = a.id === selectedId;
           const color = SEVERITY_COLOR[a.severity] ?? "#7b8581";

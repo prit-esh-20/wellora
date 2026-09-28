@@ -83,16 +83,19 @@ export default function Alerts() {
 
       <AlertsFilterBar filters={filters} onChange={setFilters} />
 
-      {/* Two-column layout: list left, sticky details right */}
-      <div className="grid grid-cols-1 items-start gap-4 xl:grid-cols-[minmax(0,1.9fr)_minmax(0,1fr)]">
+      {/* Two-column layout: list left, details right. The details panel caps
+          at the viewport height and scrolls internally, and the grid row
+          stretches so the list card fills the space alongside it instead of
+          leaving an empty gap below the shorter column. */}
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.9fr)_minmax(0,1fr)]">
         <AlertsList
           alerts={filtered}
           total={alerts.length}
           selectedId={effectiveSelectedId}
           onSelect={setSelectedId}
         />
-        <div className="min-h-0 h-0 overflow-visible">
-          <div className="xl:sticky xl:top-20 xl:self-start">
+        <div className="min-w-0">
+          <div className="custom-scroll xl:sticky xl:top-20 xl:max-h-[calc(100vh-10.5rem)] xl:self-start xl:overflow-y-auto">
             <AlertDetails alert={selected} />
           </div>
         </div>
